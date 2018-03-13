@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>ADD YOUR MOVIES</h1>
+    <!--<pre>{{data|json}}</pre>-->
+    <!--<pre style="background: #b0deff;">{{formData.email|json}}</pre>-->
+    <form name="formData" class="form-group">
+        <div class="form-group">
+            <label for="name">Movie Name</label>
+            <input type="text" ng-model="data.name" class="form-control" id="name" placeholder="Name" required name="name">
+            <div class="pull-right" ng-repeat="(field,value) in formData.name.$error" ng-show="formData.name.$touched">
+                <span class="label label-danger" ng-if="field=='required' && value">Please Enter Movie Name</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="year">Year</label>
+            <input type="number" ng-model="data.year" class="form-control" id="year" placeholder="Year" name="year" required>
+            <div class="pull-right" ng-repeat="(field,value) in formData.year.$error" ng-show="formData.year.$touched">
+                <span class="label label-danger" ng-if="field=='required' && value">Please Enter Year</span>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="genre">Genre</label>
+            <input type="text" ng-model="data.genre" class="form-control" id="genre" placeholder="Genre" name="genre">
+        </div>
+        <div class="form-group">
+            <label for="synopsis">Synopsis</label>
+            <input type="text" ng-model="data.synopsis" class="form-control" id="synopsis" placeholder="Synopsis" name="synopsis">
+        </div>
+        <button ng-click="submitForm(data)" class="btn btn-default" ng-disabled="formData.$invalid" promise-btn>Submit</button>
+    </form>
+</div>
